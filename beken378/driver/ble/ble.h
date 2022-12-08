@@ -137,6 +137,7 @@ int blemsg_is_empty(void);
 void ble_set_write_cb(bk_ble_write_cb_t func);
 void ble_set_read_cb(bk_ble_read_cb_t func);
 void ble_set_event_cb(ble_event_cb_t func);
+void ble_set_recv_adv_cb(ble_recv_adv_cb_t func);
 void ble_activate(char *ble_name);
 
 #endif /* _BLE_H_ */

@@ -952,7 +952,7 @@ uint16_t prf_get_uuid_from_handle(uint16_t handle)
 	return uuid;
 }
 
-struct prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num)
+prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num)
 {
 	struct sdp_env_tag* sdp_env;
 	struct prf_env_t* env = NULL;

@@ -312,7 +312,7 @@ kernel_task_id_t prf_get_id_from_task(kernel_msg_id_t task);
  */
 kernel_task_id_t prf_get_task_from_id(kernel_msg_id_t id);
 
-struct prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num);
+prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num);
 
 uint16_t prf_get_uuid_from_handle(uint16_t handle);
 #endif // (BLE_PROFILES)

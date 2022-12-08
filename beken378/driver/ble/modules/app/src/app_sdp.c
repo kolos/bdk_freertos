@@ -277,6 +277,64 @@ ble_err_t appm_disconnect_link(void)
 	return status;
 }
 
+uint8_t appm_adv_data_decode(uint8_t len,const uint8_t *data,uint8_t *find_str,uint8_t str_len)
+{
+    uint8_t find = 0;
+    uint8_t index;
+	uint8_t i;
+    for(index = 0; index < len;)
+    {
+        switch(data[index + 1])
+        {
+        case GAP_AD_TYPE_FLAGS:
+        {
+            bk_printf("AD_TYPE : ");
+            for(i = 0; i < data[index] - 1; i++)
+            {
+                bk_printf("%02x ",data[index + 2 + i]);
+            }
+            bk_printf("\r\n");
+            index +=(data[index] + 1);
+        }
+        break;
+        case GAP_AD_TYPE_SHORTENED_NAME:
+        case GAP_AD_TYPE_COMPLETE_NAME:
+        {
+            if(strncmp((char*)&data[index + 2],(char*)find_str,str_len) == 0)
+            {
+                find = 1;
+            }
+            bk_printf("ADV_NAME : ");
+            for(i = 0; i < data[index] - 1; i++)
+            {
+                bk_printf("%c",data[index + 2 + i]);
+            }
+            bk_printf("\r\n");
+            index +=(data[index] + 1);
+        }
+        break;
+        case GAP_AD_TYPE_MORE_16_BIT_UUID:
+        {
+            bk_printf("UUID : ");
+            for(i = 0; i < data[index] - 1;)
+            {
+                bk_printf("%02x%02x  ",data[index + 2 + i],data[index + 3 + i]);
+                i+=2;
+            }
+            bk_printf("\r\n");
+            index +=(data[index] + 1);
+        }
+        break;
+        default:
+        {
+            index +=(data[index] + 1);
+        }
+        break;
+        }
+    }
+    return find;
+}
+
 ble_err_t appm_write_data_by_uuid(uint16_t uuid,uint8_t len,uint8_t *data)
 {
     ble_err_t status = ERR_SUCCESS;
