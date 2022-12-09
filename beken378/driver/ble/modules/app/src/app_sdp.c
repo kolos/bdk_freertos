@@ -67,7 +67,7 @@ ble_err_t appm_start_scanning(void)
         cmd->mode = GAP_OBSERVER_MODE;
         cmd->filt_policy = SCAN_ALLOW_ADV_ALL;
         cmd->filter_duplic = scan_info.filter_en;
-        cmd->channel_map = 2; /*APP_ADV_CHMAP*/
+        cmd->channel_map = scan_info.channel_map; /*APP_ADV_CHMAP*/
         ble_scan_list.scan_count = 0;
         ble_set_role_mode(BLE_ROLE_MASTER);
         // Send the message

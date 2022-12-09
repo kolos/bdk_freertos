@@ -955,7 +955,7 @@ uint16_t prf_get_uuid_from_handle(uint16_t handle)
 prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num)
 {
 	struct sdp_env_tag* sdp_env;
-	struct prf_env_t* env = NULL;
+	prf_env_t* env = NULL;
 	uint8_t i;
 	uint8_t j;
 
@@ -972,7 +972,7 @@ prf_env_t * prf_env_get_from_uuid(uint16_t uuid,uint16_t char_num)
 				{
 					if(char_num==j||char_num==0)
 					{
-						env = (struct prf_env_t*) prf_env.prf[i].env;
+						env = (prf_env_t*) prf_env.prf[i].env;
 						sdp_env->db_env[0].cnx_env->sdp.char_idx = j;
 						return env;
 					}

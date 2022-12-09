@@ -64,7 +64,7 @@
 //      <3=> CENTRAL
 //      <4=> ALLROLES
 //    <i> Select Role
-#define CFG_ROLE 2
+#define CFG_ROLE 4
 
 #if ( CFG_ROLE == 0)
 #define CFG_BROADCASTER

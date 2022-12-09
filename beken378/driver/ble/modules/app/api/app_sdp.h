@@ -40,6 +40,7 @@ void appm_set_max_scan_nums(uint8_t max);
 uint8_t appm_get_max_scan_nums(void);
 uint8_t appm_start_scanning(void);
 uint8_t appm_stop_scanning(void);
+ble_scan_list_t *appm_get_scan_result(void);
 uint8_t appm_start_connenct_by_addr(uint8_t* bdaddr);
 uint8_t appm_start_connenct_by_id(uint8_t id);
 uint8_t appm_stop_connencting(void);
